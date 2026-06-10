@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Meridian Node - 鍼灸学習総合ポータル</title>
-    <!-- QRコード自動生成ライブラリ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
@@ -100,7 +99,6 @@
 
     <div class="container">
         
-        <!-- ヘッダーエリア（タイトル ＆ QRコード自動生成） -->
         <div class="header-area">
             <div class="title-group">
                 <h1>Meridian Node</h1>
@@ -109,104 +107,4 @@
             
             <div class="header-qr-box">
                 <div id="qrcode"></div>
-                <div class="header-qr-label">SHARE</div>
-            </div>
-        </div>
-
-        <!-- WHAT'S NEW -->
-        <div class="section-title">What's New</div>
-        <div class="news-box">
-            <div class="news-item">
-                <span class="news-date">2026/06/09</span>
-                <span class="badge new">New</span>
-                <span class="news-text">「臨床医学各論」を統合しました！メニューから穴埋め暗記か4択問題を選べます。</span>
-            </div>
-            <div class="news-item">
-                <span class="news-date">2026/06/08</span>
-                <span class="badge update">Update</span>
-                <span class="news-text">「解剖学クイズ（AnatoHack）」を新たにポータルへ統合しました！</span>
-            </div>
-            <div class="news-item">
-                <span class="news-date">2026/06/05</span>
-                <span class="badge update">Update</span>
-                <span class="news-text">「病理学カード」を追加しました。重要キーワードの暗記にご活用ください！</span>
-            </div>
-            <div class="news-item">
-                <span class="news-date">2026/05/26</span>
-                <span class="badge update">Update</span>
-                <span class="news-text">「Meridian-Quiz」を追加し、ポータルのグリッド配置を最適化しました。</span>
-            </div>
-        </div>
-
-        <!-- LEARNING SYSTEMS (厳選された7大アクティブアプリ) -->
-        <div class="section-title">Learning Systems</div>
-        <div class="menu-grid">
-            
-            <!-- 1: MedBlank -->
-            <a href="/MedBlank/" class="menu-card">
-                <span class="menu-icon">🩺</span>
-                <span class="menu-title">臨床医学各論</span>
-                <span class="menu-desc">穴埋め暗記 ＆ 4択演習統合版</span>
-            </a>
-
-            <!-- 2: AnatoHack -->
-            <a href="/AnatoHack/" class="menu-card">
-                <span class="menu-icon">🦴</span>
-                <span class="menu-title">解剖学クイズ</span>
-                <span class="menu-desc">AnatoHackで基礎固め</span>
-            </a>
-
-            <!-- 3: PathoForge -->
-            <a href="/PathoForge/" class="menu-card">
-                <span class="menu-icon">🔬</span>
-                <span class="menu-title">病理学カード</span>
-                <span class="menu-desc">重要キーワード・暗記システム</span>
-            </a>
-
-            <!-- 4: Meridian-Quiz -->
-            <a href="/Meridian-Quiz/" class="menu-card">
-                <span class="menu-icon">🎯</span>
-                <span class="menu-title">Meridian-Quiz</span>
-                <span class="menu-desc">4択問題演習マスター</span>
-            </a>
-
-            <!-- 5: Manual-inspection -->
-            <a href="/Manual-inspection/" class="menu-card">
-                <span class="menu-icon">💪</span>
-                <span class="menu-title">徒手検査法クイズ</span>
-                <span class="menu-desc">臨床で活きる検査法のマスター</span>
-            </a>
-
-            <!-- 6: keiraku-master -->
-            <a href="/keiraku-master/" class="menu-card">
-                <span class="menu-icon">📖</span>
-                <span class="menu-title">経絡マスター</span>
-                <span class="menu-desc">361経穴辞典 ＆ 暗記クイズ</span>
-            </a>
-
-            <!-- 7: shinky_kokusitest -->
-            <a href="/shinky_kokusitest/" class="menu-card">
-                <span class="menu-icon">📜</span>
-                <span class="menu-title">鍼灸国試対策テスト</span>
-                <span class="menu-desc">国家試験対策・総合演習テスト</span>
-            </a>
-
-        </div>
-    </div>
-
-    <script>
-        // 現在のURL（GitHub Pagesのホスト環境）から、シェア用QRコードをリアルタイム自動生成
-        window.addEventListener('DOMContentLoaded', () => {
-            const currentUrl = window.location.href;
-            new QRCode(document.getElementById("qrcode"), {
-                text: currentUrl,
-                width: 85,
-                height: 85,
-                colorDark : "#2C3E50",
-                colorLight : "#FFFFFF",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        });
-    </script>
-</body>
-</html>
+                <div class="header-
