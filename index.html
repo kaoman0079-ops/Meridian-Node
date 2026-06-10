@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Meridian Node - 鍼灸学習総合ポータル</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
             --main-bg: #F8F9FA;
@@ -40,21 +41,31 @@
             flex-direction: column;
             align-items: center;
             background: #FFFFFF;
-            padding: 6px;
+            padding: 8px;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
-        .header-qr-img {
-            width: 85px;  /* タイトルの横に上品に収まるベストサイズ */
+        /* 生成されるQRコードのコンテナサイズ */
+        #qrcode {
+            width: 85px;
             height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* ライブラリが生成するimgタグへの微調整 */
+        #qrcode img {
+            width: 85px !important;
+            height: 85px !important;
             display: block;
         }
         .header-qr-label {
             font-size: 0.65rem;
             font-weight: 800;
             color: var(--text-dim);
-            margin-top: 4px;
+            margin-top: 5px;
+            letter-spacing: 0.05em;
         }
 
         /* セクション共通 */
@@ -89,21 +100,18 @@
 
     <div class="container">
         
-        <!-- タイトルとQRコードを横並びにするヘッダーエリア -->
         <div class="header-area">
             <div class="title-group">
                 <h1>Meridian Node</h1>
                 <div class="subtitle">鍼灸学習総合ポータル</div>
             </div>
             
-            <!-- タイトルの右側にQRコードを配置 -->
             <div class="header-qr-box">
-                <img class="header-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUEAIAAAC9v48fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL8SURBVHhe7ZHBbuMwDEP9/693b9FDoYfCAnYg2bYsS89gS8wZgZgZ9bIsF67w/v6+6P8fXf90Bv0UuifRbyw8H6GfQvck+o2F5yP0U+ieRL+x8HyEfgrdk+g3Fp6P0E+hexL9xsLzEfopeO2Fbx68+rC2YpXpW8b0S8Oq66bXn4w5mK4ZfP9g1WvH9C9jvD+mD6b/ZfS3oXsS3Uf0p6GfQtfcX7E6PZ9WvL8f6S9D9yT6X0b/Mvpb0D2J7iP609BPoWsS3Uf0p6GfQvck+l9G/zL6W9A9ie4j+tPQPaW6YjXmYHp/6g9WPTD9w6pXHzbmsOr6pT9wGXMwXTP4vun1wZgXun8Z/W3onlIdvPqw9uUq9wXTP4z+wXTP6U9m+v3J9P6Y/v/Rv4zuSXT/Mvovoz8N3ZPofxn9y+hvQfckun8Z/ZfRn4buKdUVD94/WPPq6f3B9DWD78v6fEpfX/73/pPpdU+i+5fRfBn9aeieRPf7H6g77scH6sH3D+YwXdY/WPXawfRfRv9gDqZfGdPvT6bXPYnuSXT/MvrT0D2J/pfRv4z+FnRPovuI/jT0U6r79P4gNfWfPnA3pnvOD7g8mH5/TIvpten1X/pPeM2F7kl0T6L7w186fUvFivvVp0zXpf5kPq16f0zfH9Nj7lfXTO9P/f3Bqtfmdf8y+lvQPYnuX0b/ZfSnobs6eO2F7kl0T186vewP1MPr9V+vevDqw/p8WvWe8Z4bU099fzA96g/mvp/0MffVNYPpH1ZdfZjuSXR/v1T/N+ieRPek6p7zS6dfGnN+YPpAen88Xenp9yffv96YVf/X/9U9P9w8ie5fRv9l9KehewrdP1j9Y697PuhP5tN6bT6terAn0z2v+v3pT+bXDX6/WvWeG3OfPz7vP6V0T6L7+6X6v0H3JLrfs7rivv4Xf+AOxpy/dEwPvj+mr9bnh9fU9wfTO9M9ie5fRv8yulvUv6B7Et3fv3S6p+An6J7+yYVXH9b9S6fnM/pPUb8C/X8I3YPodxf9HqGfgp+ge/onF7on0W8sPB+hn0L3JPqNhecj9FPoXkS/sfB8hH4K3ZPoNxaej9BPoXsS/cbC8xb9TymF7kl0T6LfdAn9FLon0T+5cCEUuifRbzwcuBAK3ZPoNx4OXAiF7v8Ad64H9EisM7YAAAAASUVORK5CYII=" alt="QR Code" />
+                <div id="qrcode"></div>
                 <div class="header-qr-label">SHARE</div>
             </div>
         </div>
 
-        <!-- WHAT'S NEW -->
         <div class="section-title">What's New</div>
         <div class="news-box">
             <div class="news-item">
@@ -128,7 +136,6 @@
             </div>
         </div>
 
-        <!-- LEARNING SYSTEMS -->
         <div class="section-title">Learning Systems</div>
         <div class="menu-grid">
             <a href="jiten.html" class="menu-card">
@@ -155,5 +162,19 @@
 
     </div>
 
+    <script>
+        // ページが読み込まれたら、現在のURLを自動取得してQRコードを綺麗に生成する
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentUrl = window.location.href;
+            new QRCode(document.getElementById("qrcode"), {
+                text: currentUrl,
+                width: 85,
+                height: 85,
+                colorDark : "#2C3E50", // スタイリッシュな濃紺
+                colorLight : "#FFFFFF",
+                correctLevel : QRCode.CorrectLevel.H // 読み取り精度「高」
+            });
+        });
+    </script>
 </body>
 </html>
