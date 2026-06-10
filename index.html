@@ -3,218 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Meridian Node - 鍼灸学習ポータル</title>
+    <title>Meridian Node - 鍼灸学習総合ポータル</title>
     <style>
         :root {
             --main-bg: #F8F9FA;
             --card-bg: #FFFFFF;
-            --accent-blue: #3498DB;
-            --accent-red: #E74C3C;
             --text-main: #2C3E50;
             --text-dim: #7F8C8D;
-            --coming-soon: #E9ECEF;
+            --border-color: #E1E8ED;
+            --accent-blue: #2C3E50;
         }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: var(--main-bg); 
-            margin: 0; padding: 0; 
-            color: var(--text-main);
-            -webkit-text-size-adjust: 100%;
+            background-color: var(--main-bg); margin: 0; padding: 0; color: var(--text-main); -webkit-text-size-adjust: 100%;
         }
-
-        .hero {
-            padding: 35px 20px 20px;
+        .container { padding: 30px 15px 60px; max-width: 700px; margin: 0 auto; }
+        
+        /* タイトルエリアを横並びにするスタイル */
+        .header-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* スマホなどの狭い画面では自動で縦並びにする */
+        }
+        .title-group {
             text-align: center;
-            background-color: var(--card-bg);
-            border-bottom: 1px solid #E1E8ED;
         }
-        .hero h1 { font-size: 2rem; font-weight: 800; margin: 0; color: var(--text-main); letter-spacing: -0.02em; }
-        .hero p { font-size: 0.85rem; color: var(--text-dim); margin-top: 5px; font-weight: 600; }
-
-        .container { padding: 10px 15px 60px; max-width: 650px; margin: 0 auto; }
-
-        .section-title {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin: 25px 0 10px 5px;
-            font-weight: 700;
-        }
-
-        /* お知らせ掲示板 */
-        .news-board {
-            background-color: #FFF3CD;
-            border: 1px solid #FFEEBA;
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 20px;
-            max-height: 120px;
-            overflow-y: auto;
-        }
-        .news-item { display: flex; align-items: flex-start; font-size: 0.85rem; margin-bottom: 8px; line-height: 1.4; }
-        .news-date { font-weight: bold; color: var(--text-dim); margin-right: 10px; white-space: nowrap; }
-        .news-tag { background-color: var(--accent-red); color: white; font-size: 0.65rem; padding: 1px 5px; border-radius: 4px; margin-right: 8px; font-weight: bold; }
-
-        /* システムグリッド：常に2列固定 */
-        .study-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
-            margin-bottom: 20px; 
-        }
-
-        .node-card {
-            background-color: var(--card-bg);
-            border-radius: 18px;
-            padding: 20px 10px;
-            text-decoration: none;
-            color: inherit;
+        h1 { font-size: 2.2rem; font-weight: 800; margin: 0 0 5px 0; color: var(--accent-blue); }
+        .subtitle { font-size: 0.9rem; color: var(--text-dim); font-weight: 600; margin: 0; }
+        
+        /* タイトルの右に置くQRコード用のスタイル */
+        .header-qr-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            transition: transform 0.1s, box-shadow 0.2s;
-            border: 1px solid #E1E8ED;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            min-height: 130px;
-            justify-content: center;
+            background: #FFFFFF;
+            padding: 6px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
-        .node-card:not(.disabled):active { transform: scale(0.96); background-color: #F8F9FA; }
-
-        .node-card.disabled {
-            background-color: var(--coming-soon);
-            border: 1px dashed #CED4DA;
-            opacity: 0.7;
-            cursor: default;
+        .header-qr-img {
+            width: 85px;  /* タイトルの横に上品に収まるベストサイズ */
+            height: 85px;
+            display: block;
+        }
+        .header-qr-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--text-dim);
+            margin-top: 4px;
         }
 
-        .icon-box {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            width: 52px;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #EBF5FB;
-            border-radius: 14px;
+        /* セクション共通 */
+        .section-title { font-size: 0.85rem; font-weight: 800; color: var(--text-dim); letter-spacing: 0.05em; margin: 25px 0 10px 5px; text-transform: uppercase; }
+        
+        /* WHAT'S NEW エリア */
+        .news-box { background-color: #FFF9E6; border: 1px solid #FFEAA7; border-radius: 16px; padding: 15px; margin-bottom: 25px; }
+        .news-item { display: flex; align-items: flex-start; font-size: 0.9rem; font-weight: 700; line-height: 1.6; margin-bottom: 10px; color: #57606F; }
+        .news-item:last-child { margin-bottom: 0; }
+        .news-date { color: #A4B0BE; margin-right: 10px; white-space: nowrap; }
+        .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; color: #FFF; font-weight: 800; margin-right: 8px; white-space: nowrap; transform: translateY(1px); }
+        .badge.new { background-color: #FF4757; }
+        .badge.update { background-color: #FFA502; }
+        .news-text { flex: 1; }
+
+        /* グリッドメニュー */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .menu-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 20px; text-align: center; text-decoration: none; color: var(--text-main); box-shadow: 0 4px 6px rgba(0,0,0,0.01); transition: transform 0.15s, box-shadow 0.15s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .menu-card:active { transform: scale(0.97); box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+        .menu-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .menu-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+        .menu-desc { font-size: 0.75rem; color: var(--text-dim); font-weight: 600; }
+
+        @media (max-width: 480px) {
+            .menu-grid { grid-template-columns: 1fr; gap: 12px; }
+            .header-area { gap: 15px; margin-bottom: 20px; }
+            h1 { font-size: 2rem; }
         }
-        .disabled .icon-box { background-color: #DEE2E6; filter: grayscale(1); }
-
-        .title { display: block; font-size: 0.95rem; font-weight: 800; margin-bottom: 5px; color: var(--text-main); }
-        .desc { display: block; font-size: 0.7rem; color: var(--text-dim); line-height: 1.4; padding: 0 8px; }
-
-        .footer { text-align: center; padding: 60px 0; font-size: 0.7rem; color: var(--text-dim); border-top: 1px solid #E1E8ED; margin-top: 20px; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>Meridian Node</h1>
-        <p>鍼灸学習総合ポータル</p>
-    </section>
-
     <div class="container">
         
-        <h2 class="section-title">What's New</h2>
-        <div class="news-board">
+        <!-- タイトルとQRコードを横並びにするヘッダーエリア -->
+        <div class="header-area">
+            <div class="title-group">
+                <h1>Meridian Node</h1>
+                <div class="subtitle">鍼灸学習総合ポータル</div>
+            </div>
+            
+            <!-- タイトルの右側にQRコードを配置 -->
+            <div class="header-qr-box">
+                <img class="header-qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUEAIAAAC9v48fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL8SURBVHhe7ZHBbuMwDEP9/693b9FDoYfCAnYg2bYsS89gS8wZgZgZ9bIsF67w/v6+6P8fXf90Bv0UuifRbyw8H6GfQvck+o2F5yP0U+ieRL+x8HyEfgrdk+g3Fp6P0E+hexL9xsLzEfopeO2Fbx68+rC2YpXpW8b0S8Oq66bXn4w5mK4ZfP9g1WvH9C9jvD+mD6b/ZfS3oXsS3Uf0p6GfQtfcX7E6PZ9WvL8f6S9D9yT6X0b/Mvpb0D2J7iP609BPoWsS3Uf0p6GfQvck+l9G/zL6W9A9ie4j+tPQPaW6YjXmYHp/6g9WPTD9w6pXHzbmsOr6pT9wGXMwXTP4vun1wZgXun8Z/W3onlIdvPqw9uUq9wXTP4z+wXTP6U9m+v3J9P6Y/v/Rv4zuSXT/Mvovoz8N3ZPofxn9y+hvQfckun8Z/ZfRn4buKdUVD94/WPPq6f3B9DWD78v6fEpfX/73/pPpdU+i+5fRfBn9aeieRPf7H6g77scH6sH3D+YwXdY/WPXawfRfRv9gDqZfGdPvT6bXPYnuSXT/MvrT0D2J/pfRv4z+FnRPovuI/jT0U6r79P4gNfWfPnA3pnvOD7g8mH5/TIvpten1X/pPeM2F7kl0T6L7w186fUvFivvVp0zXpf5kPq16f0zfH9Nj7lfXTO9P/f3Bqtfmdf8y+lvQPYnuX0b/ZfSnobs6eO2F7kl0T186vewP1MPr9V+vevDqw/p8WvWe8Z4bU099fzA96g/mvp/0MffVNYPpH1ZdfZjuSXR/v1T/N+ieRPek6p7zS6dfGnN+YPpAen88Xenp9yffv96YVf/X/9U9P9w8ie5fRv9l9KehewrdP1j9Y697PuhP5tN6bT6terAn0z2v+v3pT+bXDX6/WvWeG3OfPz7vP6V0T6L7+6X6v0H3JLrfs7rivv4Xf+AOxpy/dEwPvj+mr9bnh9fU9wfTO9M9ie5fRv8yulvUv6B7Et3fv3S6p+An6J7+yYVXH9b9S6fnM/pPUb8C/X8I3YPodxf9HqGfgp+ge/onF7on0W8sPB+hn0L3JPqNhecj9FPoXkS/sfB8hH4K3ZPoNxaej9BPoXsS/cbC8xb9TymF7kl0T6LfdAn9FLon0T+5cCEUuifRbzwcuBAK3ZPoNx4OXAiF7v8Ad64H9EisM7YAAAAASUVORK5CYII=" alt="QR Code" />
+                <div class="header-qr-label">SHARE</div>
+            </div>
+        </div>
+
+        <!-- WHAT'S NEW -->
+        <div class="section-title">What's New</div>
+        <div class="news-box">
             <div class="news-item">
                 <span class="news-date">2026/06/09</span>
-                <span class="news-tag">New</span>
+                <span class="badge new">New</span>
                 <span class="news-text">「臨床医学各論」を統合しました！メニューから穴埋め暗記か4択問題を選べます。</span>
             </div>
             <div class="news-item">
                 <span class="news-date">2026/06/08</span>
-                <span class="news-tag">Update</span>
+                <span class="badge update">Update</span>
                 <span class="news-text">「解剖学クイズ（AnatoHack）」を新たにポータルへ統合しました！</span>
             </div>
             <div class="news-item">
                 <span class="news-date">2026/06/05</span>
-                <span class="news-tag">Update</span>
+                <span class="badge update">Update</span>
                 <span class="news-text">「病理学カード」を追加しました。重要キーワードの暗記にご活用ください！</span>
             </div>
             <div class="news-item">
                 <span class="news-date">2026/05/26</span>
-                <span class="news-tag">Update</span>
+                <span class="badge update">Update</span>
                 <span class="news-text">「Meridian-Quiz」を追加し、ポータルのグリッド配置を最適化しました。</span>
             </div>
         </div>
 
-        <h2 class="section-title">Learning Systems</h2>
-        <div class="study-grid">
-            
-            <a href="https://kaoman0079-ops.github.io/keiraku-master/" class="node-card">
-                <div class="icon-box">📖</div>
-                <div class="info">
-                    <span class="title">経穴辞典</span>
-                    <span class="desc">361穴・検索・詳細表示</span>
-                </div>
+        <!-- LEARNING SYSTEMS -->
+        <div class="section-title">Learning Systems</div>
+        <div class="menu-grid">
+            <a href="jiten.html" class="menu-card">
+                <span class="menu-icon">📖</span>
+                <span class="menu-title">経穴辞典</span>
+                <span class="menu-desc">361穴・検索・詳細表示</span>
             </a>
-
-            <a href="https://kaoman0079-ops.github.io/keiraku-master/quiz.html" class="node-card">
-                <div class="icon-box">🧠</div>
-                <div class="info">
-                    <span class="title">クイズ</span>
-                    <span class="desc">重要穴・暗記トレーニング</span>
-                </div>
+            <a href="quiz.html" class="menu-card">
+                <span class="menu-icon">🧠</span>
+                <span class="menu-title">クイズ</span>
+                <span class="menu-desc">重要穴・暗記トレーニング</span>
             </a>
-
-            <a href="https://kaoman0079-ops.github.io/shinkyu_kokusitest/" class="node-card">
-                <div class="icon-box">📜</div>
-                <div class="info">
-                    <span class="title">国家試験対策</span>
-                    <span class="desc">過去問・専門知識 of 集積</span>
-                </div>
+            <a href="blank.html" class="menu-card">
+                <span class="menu-icon">📜</span>
+                <span class="menu-title">国家試験対策</span>
+                <span class="menu-desc">穴埋め問題演習</span>
             </a>
-
-            <a href="https://kaoman0079-ops.github.io/Meridian-Quiz/" class="node-card">
-                <div class="icon-box">🎯</div>
-                <div class="info">
-                    <span class="title">Meridian-Quiz</span>
-                    <span class="desc">五行穴・募穴クイズ</span>
-                </div>
+            <a href="quiz4.html" class="menu-card">
+                <span class="menu-icon">🎯</span>
+                <span class="menu-title">Meridian-Quiz</span>
+                <span class="menu-desc">4択問題演習マスター</span>
             </a>
-
-            <a href="https://kaoman0079-ops.github.io/Manual-inspection/" class="node-card">
-                <div class="icon-box">🔍</div>
-                <div class="info">
-                    <span class="title">徒手検査法</span>
-                    <span class="desc">臨床で役立つ各種検査のまとめ</span>
-                </div>
-            </a>
-
-            <a href="https://kaoman0079-ops.github.io/AnatoHack/" class="node-card">
-                <div class="icon-box">🦴</div>
-                <div class="info">
-                    <span class="title">解剖学クイズ</span>
-                    <span class="desc">定期試験対策・高速4択マスター</span>
-                </div>
-            </a>
-
-            <!-- 【ここを完全にメニュー画面のトップに繋ぎ直しました】 -->
-            <a href="https://kaoman0079-ops.github.io/MedBlank/index.html" class="node-card">
-                <div class="icon-box">🫁</div>
-                <div class="info">
-                    <span class="title">臨床医学各論</span>
-                    <span class="desc">穴埋め暗記 ＆ 4択問題マスター</span>
-                </div>
-            </a>
-
-            <a href="https://kaoman0079-ops.github.io/PathoForge/" class="node-card">
-                <div class="icon-box">🗂️</div>
-                <div class="info">
-                    <span class="title">病理学カード</span>
-                    <span class="desc">国死対応・重要キーワード暗記</span>
-                </div>
-            </a>
-
         </div>
 
-        <footer class="footer">
-            &copy; 2026 Tatsuya Ishikawa. <br>
-            Meridian Node: A Professional Study Environment.
-        </footer>
     </div>
 
 </body>
