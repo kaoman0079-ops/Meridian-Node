@@ -10,10 +10,6 @@
             --bg-color: #f1f5f9;
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
-            --accent-orange: #f59e0b;
-            --accent-blue: #3b82f6;
-            --accent-green: #10b981;
-            --accent-red: #ef4444;
         }
 
         body {
@@ -57,7 +53,7 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #64748b;
-            margin: 0 0 15px 0;
+            margin: 40px 0 15px 0;
             border-bottom: 2px solid #cbd5e1;
             padding-bottom: 5px;
             width: fit-content;
@@ -69,7 +65,7 @@
             border: 1px solid #fef3c7;
             border-radius: 16px;
             padding: 20px 24px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
         }
 
@@ -107,11 +103,7 @@
         .badge.new { background-color: #ef4444; }
         .badge.update { background-color: #f59e0b; }
 
-        .news-text {
-            flex: 1;
-        }
-
-        /* LEARNING SYSTEMS グリッド */
+        /* LEARNING SYSTEMS グリッド（2列で自動でずれて並ぶ設定） */
         .systems-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -186,7 +178,7 @@
             <div class="news-item">
                 <span class="news-date">2026/06/15</span>
                 <span class="badge new">New</span>
-                <span class="news-text">「はりきゅう理論（AcuTheory）」をポータルへ統合しました！問題数と順序を選んで高速演習が可能です。</span>
+                <span class="news-text">「はりきゅう理論（AcuTheory）」をポータルへ追加しました！問題数と順序を選んで高速演習が可能です。</span>
             </div>
             <div class="news-item">
                 <span class="news-date">2026/06/12</span>
@@ -226,7 +218,7 @@
         </a>
 
         <a href="https://kaoman0079-ops.github.io/AnatoHack/" class="system-card">
-            <div class="card-icon">🦴</div>
+            <div class="card-icon">Bone</div>
             <div class="card-title">解剖学クイズ</div>
             <div class="card-desc">AnatoHackで基礎固め</div>
         </a>
@@ -241,6 +233,18 @@
             <div class="card-icon">☯️</div>
             <div class="card-title">はりきゅう理論</div>
             <div class="card-desc">AcuTheoryで4択演習（シャッフル対応）</div>
+        </a>
+
+        <a href="#" class="system-card">
+            <div class="card-icon">📖</div>
+            <div class="card-title">医療概論</div>
+            <div class="card-desc">医療の歴史と倫理・基本問題</div>
+        </a>
+
+        <a href="#" class="system-card">
+            <div class="card-icon">⚖️</div>
+            <div class="card-title">関係法規</div>
+            <div class="card-desc">あはき法・医療法関連マスター</div>
         </a>
     </div>
 
