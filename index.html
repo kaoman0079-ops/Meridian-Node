@@ -71,13 +71,35 @@
         
         /* What's New エリア */
         .news-box { background-color: #FFF9E6; border: 1px solid #FFEAA7; border-radius: 16px; padding: 15px; margin-bottom: 25px; }
-        .news-item { display: flex; align-items: flex-start; font-size: 0.9rem; font-weight: 700; line-height: 1.6; margin-bottom: 10px; color: #57606F; }
-        .news-item:last-child { margin-bottom: 0; }
+        .news-item { display: flex; align-items: flex-start; font-size: 0.9rem; font-weight: 700; line-height: 1.6; color: #57606F; }
         .news-date { color: #A4B0BE; margin-right: 10px; white-space: nowrap; }
         .badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; color: #FFF; font-weight: 800; margin-right: 8px; white-space: nowrap; transform: translateY(1px); }
         .badge.new { background-color: #FF4757; }
         .badge.update { background-color: #FFA502; }
         .news-text { flex: 1; }
+
+        /* What's New プルダウン（アコーディオン）追加部分 */
+        .news-more { margin-top: 10px; }
+        .news-toggle-btn {
+            cursor: pointer;
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #7F8C8D;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid #FFEAA7;
+            border-radius: 8px;
+            text-align: center;
+            list-style: none;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+        .news-toggle-btn::-webkit-details-marker { display: none; }
+        .news-toggle-btn:hover { background-color: #FFFFFF; color: #2C3E50; }
+        .news-toggle-btn::after { content: " ▼"; font-size: 0.7rem; }
+        details[open] .news-toggle-btn::after { content: " ▲"; }
+        details[open] .news-toggle-btn { margin-bottom: 10px; }
+        .news-list-hidden { display: flex; flex-direction: column; gap: 10px; }
 
         /* グリッドメニュー（大画面・iPadでは綺麗な2列に固定） */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -113,32 +135,39 @@
 
         <div class="section-title">What's New</div>
         <div class="news-box">
+            <!-- 常に表示する最新の1件 -->
             <div class="news-item">
                 <span class="news-date">2026/07/05</span>
                 <span class="badge update">Update</span>
                 <span class="news-text">「病理学」カード第3章～第6章を追加しました。手打ちしたので問題はないと思いますがありましたらご連絡ください。</span>
             </div>
-            <div class="news-item">
-                <span class="news-date">2026/06/25</span>
-                <span class="badge new">New</span>
-                <span class="news-text">「リハビリ4択問題」を公開！出題数や出題順のカスタム設定機能を追加しました。</span>
-            </div>
-            <div class="news-item">
-                <span class="news-date">2026/06/18</span>
-                <span class="badge new">New</span>
-                <span class="news-text">「適応症理論（Adeology）」をポータルへ統合しました。</span>
-            </div>
-            <div class="news-item">
-                <span class="news-date">2026/06/15</span>
-                <span class="badge update">Update</span>
-                <span class="news-text">「はりきゅう理論（AcuTheory）」をポータルへ統合しました。</span>
-            </div>
-            <div class="news-item">
-                <span class="news-date">2026/06/12</span>
-                <span class="badge new">New</span>
-                <span class="news-text">「理学的検査・内科疾患クイズ」を公開！最新160問の4択演習システムにバージョンアップしました。</span>
-            </div>
-            
+
+            <!-- 2件目以降を格納するプルダウン -->
+            <details class="news-more">
+                <summary class="news-toggle-btn">過去のお知らせを見る</summary>
+                <div class="news-list-hidden">
+                    <div class="news-item">
+                        <span class="news-date">2026/06/25</span>
+                        <span class="badge new">New</span>
+                        <span class="news-text">「リハビリ4択問題」を公開！出題数や出題順のカスタム設定機能を追加しました。</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2026/06/18</span>
+                        <span class="badge new">New</span>
+                        <span class="news-text">「適応症理論（Adeology）」をポータルへ統合しました。</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2026/06/15</span>
+                        <span class="badge update">Update</span>
+                        <span class="news-text">「はりきゅう理論（AcuTheory）」をポータルへ統合しました。</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">2026/06/12</span>
+                        <span class="badge new">New</span>
+                        <span class="news-text">「理学的検査・内科疾患クイズ」を公開！最新160問の4択演習システムにバージョンアップしました。</span>
+                    </div>
+                </div>
+            </details>
         </div>
 
         <div class="section-title">Learning Systems</div>
